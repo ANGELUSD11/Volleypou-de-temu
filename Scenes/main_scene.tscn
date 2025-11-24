@@ -1,21 +1,21 @@
 [gd_scene load_steps=6 format=3 uid="uid://c7cuvclm2r7pj"]
 
-[ext_resource type="Texture2D" uid="uid://bjctueapirre1" path="res://Assets/Sprites/image.png" id="1_6l7je"]
 [ext_resource type="PackedScene" uid="uid://bwkpubafo1l1l" path="res://Scenes/player_pou.tscn" id="1_52fb6"]
-[ext_resource type="Texture2D" uid="uid://4bsigll2e2s1" path="res://Assets/Sprites/palo.png" id="3_jv6wh"]
+[ext_resource type="Texture2D" uid="uid://cwv55j0j8w3tg" path="res://Assets/Sprites/clean_background.png" id="1_jv6wh"]
+[ext_resource type="Texture2D" uid="uid://342241vudkxc" path="res://Assets/Sprites/palo_bueno.png" id="3_jv6wh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
 size = Vector2(520, 24)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jv6wh"]
-height = 360.14514
+height = 412.73547
 
 [node name="MainScene" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(263, 151)
 scale = Vector2(0.41776502, 0.41776502)
-texture = ExtResource("1_6l7je")
+texture = ExtResource("1_jv6wh")
 
 [node name="Walls" type="StaticBody2D" parent="."]
 
@@ -28,10 +28,13 @@ position = Vector2(42, 209)
 
 [node name="Palo" type="StaticBody2D" parent="."]
 position = Vector2(261.00003, 214.00002)
-scale = Vector2(0.44426522, 0.44426522)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Palo"]
-shape = SubResource("CapsuleShape2D_jv6wh")
+scale = Vector2(0.3392003, 0.3392003)
 
 [node name="SpritePalo" type="Sprite2D" parent="Palo"]
+position = Vector2(0, 24.570618)
+scale = Vector2(1, 1.1237814)
 texture = ExtResource("3_jv6wh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Palo"]
+position = Vector2(2.9480207, 26.53295)
+shape = SubResource("CapsuleShape2D_jv6wh")
