@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwkpubafo1l1l"]
+
+[ext_resource type="Script" uid="uid://dv071jh62pasg" path="res://Scenes/player_pou.gd" id="1_fane4"]
+[ext_resource type="Texture2D" uid="uid://bfwogec3x6rhq" path="res://Assets/Sprites/pou.png" id="1_xfnx0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fane4"]
+radius = 17.0
+height = 34.0
+
+[node name="PlayerPou" type="CharacterBody2D"]
+scale = Vector2(1.5783839, 1.5783839)
+script = ExtResource("1_fane4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.26260683, 0.26260683)
+texture = ExtResource("1_xfnx0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 5)
+scale = Vector2(1.2252814, 1.2252814)
+shape = SubResource("CapsuleShape2D_fane4")
