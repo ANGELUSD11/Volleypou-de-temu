@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7cuvclm2r7pj"]
+[gd_scene load_steps=16 format=3 uid="uid://c7cuvclm2r7pj"]
 
 [ext_resource type="PackedScene" uid="uid://bwkpubafo1l1l" path="res://Scenes/player_pou.tscn" id="1_52fb6"]
 [ext_resource type="Script" uid="uid://ck8wyk45oyqed" path="res://Scripts/main_scene.gd" id="1_iacmt"]
 [ext_resource type="Texture2D" uid="uid://cwv55j0j8w3tg" path="res://Assets/Sprites/clean_background.png" id="1_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://342241vudkxc" path="res://Assets/Sprites/palo_bueno.png" id="3_jv6wh"]
 [ext_resource type="PackedScene" uid="uid://d1tfgcq01vasd" path="res://Scenes/pelota.tscn" id="4_x6ack"]
+[ext_resource type="Texture2D" uid="uid://da36iijsbner0" path="res://Assets/Sprites/Nubes.png" id="6_6ev3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
 size = Vector2(638, 52)
@@ -19,7 +20,20 @@ size = Vector2(59, 459)
 size = Vector2(557, 27)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jv6wh"]
+radius = 26.53302
 height = 412.73547
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ev3c"]
+size = Vector2(645, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_maf8m"]
+size = Vector2(22, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huasi"]
+size = Vector2(23.5, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1efj"]
+size = Vector2(21.75, 112.375)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_iacmt")
@@ -48,7 +62,7 @@ position = Vector2(255, -150)
 shape = SubResource("RectangleShape2D_iacmt")
 
 [node name="PlayerPou" parent="." instance=ExtResource("1_52fb6")]
-position = Vector2(42, 209)
+position = Vector2(71, 228.99998)
 
 [node name="Palo" type="StaticBody2D" parent="."]
 position = Vector2(261.00003, 214.00002)
@@ -63,5 +77,53 @@ texture = ExtResource("3_jv6wh")
 position = Vector2(2.9480207, 26.53295)
 shape = SubResource("CapsuleShape2D_jv6wh")
 
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(262.5, 287.5)
+shape = SubResource("RectangleShape2D_6ev3c")
+debug_color = Color(0.9987095, 0, 0.1468184, 0.41960785)
+
+[node name="ReloadTimer" type="Timer" parent="DetectionArea"]
+
+[node name="InvisibleWalls" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(237, 218)
+shape = SubResource("RectangleShape2D_maf8m")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(288, 216)
+shape = SubResource("RectangleShape2D_maf8m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(11.25, 208)
+shape = SubResource("RectangleShape2D_huasi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InvisibleWalls"]
+position = Vector2(508, 217.8125)
+shape = SubResource("RectangleShape2D_m1efj")
+
+[node name="Nubes" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Nubes"]
+position = Vector2(70, 54)
+scale = Vector2(0.55341625, 0.55341625)
+texture = ExtResource("6_6ev3c")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Nubes"]
+position = Vector2(287, 59)
+scale = Vector2(0.52821404, 0.60199654)
+texture = ExtResource("6_6ev3c")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Nubes"]
+position = Vector2(495, 54)
+scale = Vector2(0.52423525, 0.52423525)
+texture = ExtResource("6_6ev3c")
+
 [node name="Pelota" parent="." instance=ExtResource("4_x6ack")]
-position = Vector2(39, 7)
+position = Vector2(38, 39)
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

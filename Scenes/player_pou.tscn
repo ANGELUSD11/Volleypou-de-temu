@@ -4,12 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bfwogec3x6rhq" path="res://Assets/Sprites/pou.png" id="1_xfnx0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fane4"]
-radius = 17.0
-height = 34.0
+radius = 7.7207403
 
 [node name="PlayerPou" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(1.5783839, 1.5783839)
 collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_fane4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,6 +17,6 @@ scale = Vector2(0.26260683, 0.26260683)
 texture = ExtResource("1_xfnx0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 5)
-scale = Vector2(1.5637528, 1.5637528)
+position = Vector2(1.2671189, 5.7020345)
+scale = Vector2(2.4617825, 1.3720604)
 shape = SubResource("CapsuleShape2D_fane4")

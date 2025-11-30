@@ -4,13 +4,15 @@
 [ext_resource type="Script" uid="uid://o7byfb2kmirl" path="res://Scripts/pelota.gd" id="1_usuhk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_usuhk"]
-bounce = 0.4
+rough = true
+bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvw5w"]
 
-[node name="Pelota" type="RigidBody2D"]
+[node name="Pelota" type="RigidBody2D" groups=["ball"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 11
+mass = 2.0
 physics_material_override = SubResource("PhysicsMaterial_usuhk")
 freeze = true
 freeze_mode = 1
@@ -26,9 +28,7 @@ texture = ExtResource("1_r0bop")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(147.99998, 122)
-scale = Vector2(2.018362, 2.018362)
+scale = Vector2(1.7375243, 1.7375243)
 shape = SubResource("CircleShape2D_xvw5w")
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
