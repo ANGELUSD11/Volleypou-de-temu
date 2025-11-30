@@ -63,4 +63,4 @@ restart={
 
 [physics]
 
-common/physics_ticks_per_second=140
+common/physics_ticks_per_second=120
