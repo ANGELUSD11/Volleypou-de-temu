@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1tfgcq01vasd"]
+
+[ext_resource type="Texture2D" uid="uid://c5fapi5hd130w" path="res://Assets/Sprites/ball.png" id="1_r0bop"]
+[ext_resource type="Script" uid="uid://o7byfb2kmirl" path="res://Scripts/pelota.gd" id="1_usuhk"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_usuhk"]
+bounce = 0.4
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvw5w"]
+
+[node name="Pelota" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_usuhk")
+freeze = true
+freeze_mode = 1
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("1_usuhk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(149, 126)
+scale = Vector2(0.4255784, 0.4255784)
+texture = ExtResource("1_r0bop")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(147.99998, 122)
+scale = Vector2(2.018362, 2.018362)
+shape = SubResource("CircleShape2D_xvw5w")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

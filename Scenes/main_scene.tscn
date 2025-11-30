@@ -1,16 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7cuvclm2r7pj"]
+[gd_scene load_steps=11 format=3 uid="uid://c7cuvclm2r7pj"]
 
 [ext_resource type="PackedScene" uid="uid://bwkpubafo1l1l" path="res://Scenes/player_pou.tscn" id="1_52fb6"]
+[ext_resource type="Script" uid="uid://ck8wyk45oyqed" path="res://Scripts/main_scene.gd" id="1_iacmt"]
 [ext_resource type="Texture2D" uid="uid://cwv55j0j8w3tg" path="res://Assets/Sprites/clean_background.png" id="1_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://342241vudkxc" path="res://Assets/Sprites/palo_bueno.png" id="3_jv6wh"]
+[ext_resource type="PackedScene" uid="uid://d1tfgcq01vasd" path="res://Scenes/pelota.tscn" id="4_x6ack"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6l7je"]
-size = Vector2(520, 24)
+size = Vector2(638, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv6wh"]
+size = Vector2(62, 458.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6ack"]
+size = Vector2(59, 459)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iacmt"]
+size = Vector2(557, 27)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jv6wh"]
 height = 412.73547
 
 [node name="MainScene" type="Node2D"]
+script = ExtResource("1_iacmt")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(263, 151)
@@ -20,8 +32,20 @@ texture = ExtResource("1_jv6wh")
 [node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
-position = Vector2(259, 286)
+position = Vector2(259, 300)
 shape = SubResource("RectangleShape2D_6l7je")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-31, 93.375)
+shape = SubResource("RectangleShape2D_jv6wh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(549.5, 95.5)
+shape = SubResource("RectangleShape2D_x6ack")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(255, -150)
+shape = SubResource("RectangleShape2D_iacmt")
 
 [node name="PlayerPou" parent="." instance=ExtResource("1_52fb6")]
 position = Vector2(42, 209)
@@ -38,3 +62,6 @@ texture = ExtResource("3_jv6wh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Palo"]
 position = Vector2(2.9480207, 26.53295)
 shape = SubResource("CapsuleShape2D_jv6wh")
+
+[node name="Pelota" parent="." instance=ExtResource("4_x6ack")]
+position = Vector2(39, 7)
