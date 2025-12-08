@@ -27,7 +27,7 @@ height = 412.73547
 size = Vector2(884, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_maf8m"]
-size = Vector2(22, 112)
+size = Vector2(12, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_huasi"]
 size = Vector2(20, 181)
@@ -91,11 +91,11 @@ debug_color = Color(0.9987095, 0, 0.1468184, 0.41960785)
 collision_layer = 16
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(260, 218)
+position = Vector2(281, 218)
 shape = SubResource("RectangleShape2D_maf8m")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="InvisibleWalls"]
-position = Vector2(320, 216)
+position = Vector2(302, 217)
 shape = SubResource("RectangleShape2D_maf8m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWalls"]
